@@ -1,0 +1,101 @@
+@define-color background rgba(20, 20, 20, 0.8);
+@define-color foreground rgba(255, 255, 255, 1);
+
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 18;
+	font-family: JetBrainsMono Nerd Font;
+}
+window {
+	background: transparent;
+}
+window > box {
+	color: @foreground;
+	background: @background;
+	border: 2px solid white;
+	border-radius: 20;
+	box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.5);
+	padding: 3 15 3 15; 
+	margin: 5 480 5 480;
+}
+
+
+tooltip {
+	background: @background;
+}
+
+#workspaces{
+	
+}
+
+#workspaces button{
+	border: 0;
+	margin: 5;
+	color: @foreground;
+	border: 2px solid @foreground;
+	border-radius: 20;
+	font-weight: bold;
+	background: transparent;
+	padding: 0 5 0 5;
+	transition: 0.2s;
+	transition-timing-function: ease-in-out;
+}
+
+
+#workspaces button.active,
+#workspaces button:hover {
+	color: @background;
+	background: @foreground;
+	padding: 0 15 0 15;
+	transition: 0.2s;
+	transition-timing-function: ease-in-out;
+}
+
+#custom-powermenu{
+	color: deepskyblue;
+	font-size: 30;
+	margin-right: 10;
+}
+
+#clock {
+	font-weight: bold;
+}
+
+#battery,
+#network,
+#wireplumber,
+#custom-microphone,
+#bluetooth{
+	margin: 0 8 0 8;
+	font-size: 20;
+}
+
+#battery {
+	color: greenyellow;
+}
+
+#battery.full,
+#battery.charging {
+	color: cyan;	
+}
+
+#battery.critical:not(.charging) {
+	color: red;
+}
+
+#battery.warning:not(.charging) {
+	color: yellow;
+}
+
+#bluetooth.on {
+	color: cyan;
+}
+
+#bluetooth.connected {
+	color: rgb(0, 130, 252);
+}
+
+
+
+

@@ -1,0 +1,111 @@
+[
+	{
+	"name": "top",
+	"layer": "top",
+	"position": "top",
+	"modules-left": [
+		"custom/powermenu",
+		"hyprland/workspaces"
+	],
+	"modules-center": [
+		"clock"
+	],
+	"modules-right": [
+		"custom/microphone",
+		"wireplumber",
+		"network",
+		"bluetooth",
+		"battery"
+	],
+	"height": 40,
+	"wireplumber": {
+		"format": "{icon}",
+		"format-muted": "󰖁",
+		"format-icons": ["", "", ""],
+		"tooltip-format": "{node_name}\nVolume: {volume}%",
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+	},
+	"bluetooth": {
+		"format-off": "",
+		"format-on": "󰂰",
+		"format-disabled": "󰂲",
+		"format-connected": "",
+		"tooltip-format-connected": "{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}\nBattery: {device_battery_percentage}%",
+		"on-click": "blueman-manager",
+		"on-scroll-up": "bluetoothctl power on",
+		"on-scroll-down": "bluetoothctl power off"
+	},
+	"network": {
+		"format": "{ifname}",
+		"format-wifi": "󰤨",
+		"format-ethernet": "󰈀",
+		"format-disconnected": "󰤭",
+		"tooltip-format": "{ifname} \n{ipaddr}",
+		"tooltip-format-wifi": "{essid} \n{ipaddr}\n{frequency} GHz\nStrength: {signalStrength}%",
+		"tooltip-format-ethernet": "{ifname} \n{ipaddr}",
+		"tooltip-format-disconnected": "Disconnected",
+		"on-click": "nm-connection-editor"
+	},
+	"battery": {
+		"interval": 1,
+		"states": {
+		"warning": 30,
+		"critical": 10
+		},
+		"format": "{icon}",
+		"format-charging": "{icon} 󱐋",
+		"format-full": "{icon}  󰠠",
+		"format-icons": [
+			" ",
+			" ",
+			" ",
+			" ",
+			" "
+		],
+		"tooltip-format": "Capacity: {capacity}%\n{timeTo}\nPower draw: {power:0.1f} W"
+	},
+	"hyprland/workspaces": {
+		"on-click": "activate"
+	},
+	"clock": {
+		"format": "{:%d %B, %H:%M}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+		"mode": "month",
+		"mode-mon-col": 3,
+		"weeks-pos": "right",
+		"on-click-right": "mode",
+		"format": {
+			"months": "<span color='#ffead3'><b>{}</b></span>",
+			"days": "<span color='#ecc6d9'><b>{}</b></span>",
+			"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+			"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+			"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+		}
+		},
+		"actions": {
+		"on-click-right": "mode"
+		}
+	},
+	"custom/powermenu": {
+		"format": "󰣇",
+		"on-click": "~/.config/waybar/scripts/powermenu.sh",
+		"tooltip": false
+	},
+	"custom/microphone": {
+		"interval": 1,
+		"format": "{icon}",
+		"format-icons": {
+			"muted": "󰍭",
+			"unmuted": ""
+		},
+		"exec": "~/.config/waybar/scripts/microphone.sh",
+		"return-type": "json",
+		"on-click": "~/.config/waybar/scripts/microphone.sh toggle",
+		"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+ -l 1",
+		"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-"
+	}
+        }
+]
