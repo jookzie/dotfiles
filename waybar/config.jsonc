@@ -1,23 +1,44 @@
 [
 	{
-	"name": "top",
-	"layer": "top",
-	"position": "top",
-	"modules-left": [
-		"custom/powermenu",
-		"hyprland/workspaces"
-	],
-	"modules-center": [
-		"clock"
-	],
-	"modules-right": [
-		"custom/microphone",
-		"wireplumber",
-		"network",
-		"bluetooth",
-		"battery"
-	],
-	"height": 40,
+		"name": "top",
+		"layer": "top",
+		"position": "top",
+		"modules-left": [
+			"custom/powermenu",
+			"hyprland/workspaces"
+		],
+		"modules-center": [
+			"clock"
+		],
+		"modules-right": [
+			"custom/microphone",
+			"wireplumber",
+			"network",
+			"bluetooth",
+			"battery"
+		],
+		"height": 40,
+	// "cava": {
+	// 	//"cava_config": "$XDG_CONFIG_HOME/cava/config",
+	// 	"framerate": 30,
+	// 	"autosens": 1,
+	// 	"sensitivity": 1,
+	// 	"bars": 14,
+	// 	"lower_cutoff_freq": 50,
+	// 	"higher_cutoff_freq": 10000,
+	// 	"method": "pulse",
+	// 	"source": "auto",
+	// 	"stereo": true,
+	// 	"reverse": false,
+	// 	"bar_delimiter": 0,
+	// 	"monstercat": false,
+	// 	"waves": false,
+	// 	"noise_reduction": 0.77,
+	// 	"format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+	// 	"actions": {
+	// 		"on-click-right": "mode"
+	// 	}
+	// },
 	"wireplumber": {
 		"format": "{icon}",
 		"format-muted": "󰖁",
@@ -46,23 +67,27 @@
 		"tooltip-format-wifi": "{essid} \n{ipaddr}\n{frequency} GHz\nStrength: {signalStrength}%",
 		"tooltip-format-ethernet": "{ifname} \n{ipaddr}",
 		"tooltip-format-disconnected": "Disconnected",
-		"on-click": "nm-connection-editor"
 	},
 	"battery": {
 		"interval": 1,
 		"states": {
-		"warning": 30,
-		"critical": 10
+			"warning": 30,
+			"critical": 10
 		},
 		"format": "{icon}",
 		"format-charging": "{icon} 󱐋",
-		"format-full": "{icon}  󰠠",
+		"format-full": "{icon} 󰠠",
 		"format-icons": [
 			" ",
 			" ",
+			" ",
+			" ",
+			" ",
 			" ",
 			" ",
-			" "
+			" ",
+			" ",
+			" ",
 		],
 		"tooltip-format": "Capacity: {capacity}%\n{timeTo}\nPower draw: {power:0.1f} W"
 	},
@@ -73,25 +98,25 @@
 		"format": "{:%d %B, %H:%M}",
 		"tooltip-format": "<tt><small>{calendar}</small></tt>",
 		"calendar": {
-		"mode": "month",
-		"mode-mon-col": 3,
-		"weeks-pos": "right",
-		"on-click-right": "mode",
-		"format": {
-			"months": "<span color='#ffead3'><b>{}</b></span>",
-			"days": "<span color='#ecc6d9'><b>{}</b></span>",
-			"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-			"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-			"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-		}
+			"mode": "month",
+			"mode-mon-col": 3,
+			"weeks-pos": "left",
+			"on-click-right": "mode",
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
 		},
 		"actions": {
-		"on-click-right": "mode"
+			"on-click-right": "mode"
 		}
 	},
 	"custom/powermenu": {
 		"format": "󰣇",
-		"on-click": "~/.config/waybar/scripts/powermenu.sh",
+		"on-click": "wlogout",
 		"tooltip": false
 	},
 	"custom/microphone": {
@@ -104,8 +129,8 @@
 		"exec": "~/.config/waybar/scripts/microphone.sh",
 		"return-type": "json",
 		"on-click": "~/.config/waybar/scripts/microphone.sh toggle",
-		"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+ -l 1",
-		"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-"
+		"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+ -l 1",
+		"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
 	}
-        }
+	}
 ]
