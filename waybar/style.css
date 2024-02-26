@@ -1,4 +1,6 @@
-@define-color background rgba(20, 20, 20, 0.8);
+@define-color background rgba(20, 20, 20, 0.6);
+@define-color background-l1 rgba(50, 50, 50, 0.8);
+@define-color background-l2 rgba(80, 80, 80, 0.8);
 @define-color foreground rgba(255, 255, 255, 1);
 
 * {
@@ -8,19 +10,23 @@
 	font-family: JetBrainsMono Nerd Font;
 }
 
-window {
+window#waybar.top {
 	background: transparent;
 }
-window > box {
+window#waybar.top > box {
 	color: @foreground;
 	background: @background;
 	border: 2px solid white;
 	border-radius: 20px;
-	box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.5);
-	padding: 3px 15px 3px 15px; 
+	box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.6);
+	padding: 3px 10px 3px 10px;
 	margin: 5px 480px 5px 480px;
 
 	transition: width 2s;
+}
+
+window#waybar.bottom {
+	background: @background;
 }
 
 
@@ -28,60 +34,75 @@ tooltip {
 	background: @background;
 }
 
-#workspaces{
-	
-}
-
-#workspaces button{
-	border: 0px;
-	margin: 5px;
-	color: @foreground;
-	border: 2px solid @foreground;
-	border-radius: 20px;
-	font-weight: bold;
-	background: transparent;
-	padding: 0px 5px 0px 5px;
-	transition: 0.2s;
-	transition-timing-function: ease-in-out;
-}
-
-
-#workspaces button.active,
-#workspaces button:hover {
-	color: @background;
-	background: @foreground;
-	padding: 0px 15px 0px 15px;
-	transition: 0.2s;
-	transition-timing-function: ease-in-out;
-}
 
 #custom-powermenu{
 	color: deepskyblue;
-	font-size: 30px;
-	margin-right: 10px;
+	background: transparent;
+
+	font-size: 40px;
+	padding: 0px 30px 0px 30px;
+	margin-right: 20px;
+}
+
+#custom-powermenu:hover {
+	color: transparent;
+	background: deepskyblue;
+	transition: color 0.25s;
 }
 
 #clock {
 	font-weight: bold;
 }
 
+#waybar.bottom #clock {
+	margin-right: 30px;
+}
+
+#taskbar button {
+	background: transparent;
+	padding: 0px 7px 2px 7px;
+	border: 0;
+
+	transition: background 0.25s;
+}
+
+#taskbar button:hover {
+	background: @background-l1;
+	border-bottom: 2px solid deepskyblue;
+	padding-bottom: 0px;
+
+	transition: background 0.25s;
+}
+
+#taskbar button.active {
+	border-bottom: 2px solid deepskyblue;
+	padding-bottom: 0px;
+}
+
+#taskbar button.active:hover {
+	background: @background-l2;
+	transition: background 0.25s;
+}
+
 #battery,
 #network,
 #wireplumber,
 #custom-microphone,
+#custom-camera,
 #bluetooth{
-	margin: 0px 8px 0px 8px;
+	margin: 0px 8px;
 	font-size: 20px;
 	transition: color 1s;
 }
 
 #battery {
 	color: greenyellow;
+	background: transparent;
 }
 
 #battery.full,
 #battery.charging {
-	color: cyan;	
+	color: deepskyblue;
 }
 
 #battery.critical:not(.charging) {
@@ -98,4 +119,8 @@ tooltip {
 
 #bluetooth.connected {
 	color: rgb(0, 130, 252);
+}
+
+#cava {
+	color: deepskyblue;
 }
